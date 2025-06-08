@@ -30,10 +30,10 @@ app.get("/dbtest", async (req, res) => {
   }
 });
 
-// Route để lấy dữ liệu (ví dụ: lấy tất cả người dùng)
-app.get("/users", async (req, res) => {
+// Route để lấy tất cả người dùng
+app.get("/api/users", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM users"); // bảng 'users' (thay theo db của bạn)
+    const result = await pool.query("SELECT * FROM users");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -41,8 +41,8 @@ app.get("/users", async (req, res) => {
   }
 });
 
-// Route để thêm dữ liệu (ví dụ: thêm người dùng)
-app.post("/users", async (req, res) => {
+// Route để thêm người dùng
+app.post("/api/users", async (req, res) => {
   const { name, email } = req.body;
   try {
     const result = await pool.query(
